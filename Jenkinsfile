@@ -16,5 +16,18 @@ pipeline{
                 git branch: 'main', credentialsId: 'github', url: 'https://github.com/namdz608/React-app-test-to-deploy'
             }
         }
+
+        stage("Build Application"){
+            steps {
+                sh "npm run build"
+            }
+        }
+
+        stage("Test Application"){
+            steps {
+                sh 'npm start'
+            }
+        }
+        
     }
 }
