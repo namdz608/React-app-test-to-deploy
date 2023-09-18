@@ -19,13 +19,13 @@ pipeline{
 
         stage("Build Application"){
             steps {
-                sh "npm run build"
+                sh "npm i --force"
             }
         }
 
         stage("Test Application"){
             steps {
-                sh 'npm start'
+                sh 'npm run build'
             }
         }
         
