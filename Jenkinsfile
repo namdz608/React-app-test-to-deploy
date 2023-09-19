@@ -56,7 +56,7 @@ pipeline{
                 
             // }
             steps {
-                sh 'sudo docker ps'
+                sh 'ls -l'
             }
         }
     }
