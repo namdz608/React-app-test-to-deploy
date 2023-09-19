@@ -56,7 +56,7 @@ pipeline{
                 
             // }
             steps {
-                sh 'docker build -t brucewyane/react:latest .'
+                sh 'sudo docker ps'
             }
         }
     }
