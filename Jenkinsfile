@@ -49,17 +49,20 @@ pipeline{
         // }
 
          stage("Build and push docker"){
-            steps {
-                script {
-                    docker.withRegistry('',DOCKER_PASS){
-                        docker_image = docker.build "${IMAGE_NAME}"
-                }
-                    docker.withRegistry('',DOCKER_PASS){
-                        docker_image.push("${IMAGE_TAG}")
-                        docker_image.push("latest")
-                }
-                }
+            // steps {
+            //     script {
+            //         docker.withRegistry('',DOCKER_PASS){
+            //             docker_image = docker.build "${IMAGE_NAME}"
+            //     }
+            //         docker.withRegistry('',DOCKER_PASS){
+            //             docker_image.push("${IMAGE_TAG}")
+            //             docker_image.push("latest")
+            //     }
+            //     }
                 
+            // }
+            steps {
+                sh 'sudo docker build -t brucewyane/react:latest .'
             }
         }
     }
