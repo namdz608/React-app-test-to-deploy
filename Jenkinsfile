@@ -56,7 +56,8 @@ pipeline{
                 
             // }
             steps {
-                sh 'docker ps'
+                sh 'cd /home/jenkins/workspace/complete-production'
+                sh 'docker build -t brucewyane/react:latest .'
             }
         }
     }
