@@ -5,7 +5,7 @@ pipeline{
     tools {
         nodejs 'NodeVer16'
     }
-    enviroment {
+    environment {
         APP_NAME = "complete-production"
         RELEASE = "1.0.0"
         DOCKER_USER = "brucewyane"
