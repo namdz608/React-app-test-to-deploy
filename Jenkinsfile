@@ -29,5 +29,13 @@ pipeline{
             }
         }
         
+        stage("Sonarqube Analysis"){
+            steps {
+                withSonarQubeEnv(credentialsId: 'sonar-token') {
+                    sh 'npm sonar:sonar'
+                }
+                
+            }
+        }
     }
 }
