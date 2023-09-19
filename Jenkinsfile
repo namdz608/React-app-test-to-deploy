@@ -60,5 +60,12 @@ pipeline{
                 sh 'docker build -t brucewyane/react:latest .'
             }
         }
+
+        stage("Docker Push"){
+            steps {
+                sh "docker login -u brucewyane -p vukhanhnam123"
+                sh 'docker push brucewyane/react:latest'
+            }
+        }
     }
 }
