@@ -33,7 +33,7 @@ pipeline{
             steps {
                 script {
                     withSonarQubeEnv(credentialsId: 'sonar-token') {
-                        sh "npm install sonar-scanner"
+                        sh "npm install sonar-scanner --force"
                         sh "npm run sonar"
                     }
                 } 
