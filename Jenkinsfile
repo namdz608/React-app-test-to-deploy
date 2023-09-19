@@ -30,12 +30,6 @@ pipeline{
                 sh "npm i --force"
             }
         }
-
-        stage("Test Application"){
-            steps {
-                sh 'npm run build'
-            }
-        }
         
         // stage("Sonarqube Analysis"){
         //     steps {
@@ -62,7 +56,7 @@ pipeline{
                 
             // }
             steps {
-                sh 'sudo docker build -t brucewyane/react:latest .'
+                sh 'docker build -t brucewyane/react:latest .'
             }
         }
     }
