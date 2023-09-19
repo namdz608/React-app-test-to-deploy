@@ -33,7 +33,8 @@ pipeline{
             steps {
                 script {
                     withSonarQubeEnv(credentialsId: 'sonar-token') {
-                        sh "${tool("sonarscan ")}/bin/sonar-scanner -Dsonar.projectKey=reactapp -Dsonar.projectName=reactapp"
+                        sh "npm install sonar-scanner"
+                        sh "npm run sonar"
                     }
                 } 
             }
