@@ -5,6 +5,14 @@ pipeline{
     tools {
         nodejs 'NodeVer16'
     }
+    enviroment {
+        APP_NAME = "complete-production"
+        RELEASE = "1.0.0"
+        DOCKER_USER = "brucewyane"
+        DOCKER_PASS = "dockerhub"
+        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
+        IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+    }
     stages{
         stage("Clean up workspace"){
             steps{
@@ -29,14 +37,26 @@ pipeline{
             }
         }
         
-        stage("Sonarqube Analysis"){
+        // stage("Sonarqube Analysis"){
+        //     steps {
+        //         script {
+        //             withSonarQubeEnv(credentialsId: 'sonar-token') {
+        //                 sh "npm install sonar-scanner --force"
+        //                 sh "npm run sonar-scanner"
+        //             }
+        //         } 
+        //     }
+        // }
+
+         stage("Build and push docker"){
             steps {
-                script {
-                    withSonarQubeEnv(credentialsId: 'sonar-token') {
-                        sh "npm install sonar-scanner --force"
-                        sh "npm run sonar-scanner"
-                    }
-                } 
+                docker.withRegistry('',DOCKER_PASS){
+                    docker_image = docker.build "${IMAGE_NAME}"
+                }
+                docker.withRegistry('',DOCKER_PASS){
+                    docker_image.push("${IMAGE_TAG}")
+                    docker_image.push("latest")
+                }
             }
         }
     }
