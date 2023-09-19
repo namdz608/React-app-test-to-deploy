@@ -31,10 +31,11 @@ pipeline{
         
         stage("Sonarqube Analysis"){
             steps {
-                withSonarQubeEnv(credentialsId: 'sonar-token') {
-                    sh 'npm sonar:sonar'
-                }
-                
+                script {
+                    withSonarQubeEnv(credentialsId: 'sonar-token') {
+                        sh 'npm sonar:sonar'
+                    }
+                } 
             }
         }
     }
