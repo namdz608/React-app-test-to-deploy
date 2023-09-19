@@ -33,7 +33,7 @@ pipeline{
             steps {
                 script {
                     withSonarQubeEnv(credentialsId: 'sonar-token') {
-                        sh 'npm sonar:sonar'
+                        sh "${tool("sonarscan ")}/bin/sonar-scanner -Dsonar.projectKey=reactapp -Dsonar.projectName=reactapp"
                     }
                 } 
             }
