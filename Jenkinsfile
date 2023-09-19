@@ -56,7 +56,7 @@ pipeline{
                 
             // }
             steps {
-                sh 'ls -l'
+                sh 'docker build -t brucewyane/react:latest .'
             }
         }
     }
