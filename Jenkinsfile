@@ -67,5 +67,13 @@ pipeline{
                 sh 'docker push brucewyane/react:latest'
             }
         }
+
+        stage("Deploy K8s"){
+            steps {
+                sh "cd /home/jenkins/workspace/complete-production"
+                sh "kubectl apply -f ./deployment&service.yaml"
+                sh "kubectl get svc"
+            }
+        }
     }
 }
