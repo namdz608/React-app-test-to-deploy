@@ -71,7 +71,8 @@ pipeline{
         stage("Deploy K8s"){
             steps {
                 sh "cd /home/jenkins/workspace/complete-production"
-                sh "kubectl apply -f ./deployment_service.yaml"
+                sh "ls"
+                // sh "kubectl apply -f ./deployment_service.yaml"
                 sh "kubectl get svc"
             }
         }
