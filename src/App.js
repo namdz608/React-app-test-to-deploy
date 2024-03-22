@@ -6,7 +6,7 @@ function App() {
     <>
       <body>
         <div id="card">
-          <center><h1>Helu Em Thao </h1></center>
+          <center><h1>💓  🌹   💓</h1></center>
           <div class="heart" id="heart1">
             <div id="half1">
               <div id="circle"></div>
